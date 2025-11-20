@@ -6,3 +6,19 @@ I simplify the process of installing comfyui on android caus most people only us
 
 apt update && apt upgrade -y && apt install python3 python3-pip python3-venv git ffmpeg -y && python3 -m venv comfyui-env && source comfyui-env/bin/activate && git clone https://github.com/comfyanonymous/ComfyUI.git && cd ComfyUI && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu && pip install -r requirements.txt && cd custom_nodes && git clone https://github.com/ltdrdata/ComfyUI-Manager.git
 cd ..
+
+
+
+Navigate to the webui in your browser
+
+http://127.0.0.1:8188
+
+To start after rebooting termux after first installation
+
+./start-ubuntu22.sh
+
+cd ComfyUI && python main.py --cpu --disable-xformers --cpu-vae --disable-cuda-malloc --fp8_e4m3fn-unet --fp8_e4m3fn-text-enc --fast --disable-smart-memory --supports-fp8-compute --async-offload --use-split-cross-attention --force-fp16 --cache-none
+
+Fp16 for ipadapter V2
+
+cd ComfyUI && python main.py --cpu --cpu-vae --disable-cuda-malloc --use-pytorch-cross-attention --force-fp16 --disable-smart-memory --async-offload --cache-none --dont-upcast-attention --fp16-vae
